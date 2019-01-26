@@ -5,8 +5,12 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://admin:aEpNJ0tCWxo00jvm@cluster0-qapyv.mongodb.net/test?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
-  const collection = client.db("test").collection("devices");
- // perform actions on the collection object
+	const collection = client.db("app").collection("objs");
+ 	// perform actions on the collection object
+ 	collection.find({}).toArray(function(err, items) {
+    	console.log(items)
+    	db.close();
+   	});
   client.close();
 });
 
